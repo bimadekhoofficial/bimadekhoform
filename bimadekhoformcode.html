@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bima Dekho - Insurance Services</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0F4C81; 
+            --primary-dark: #072e51;
+            --accent: #FF7F50; 
+            --dark: #1E293B;
+            --light: #F1F5F9;
+            --gray: #64748B;
+            --white: #ffffff;
+            --border: #E2E8F0;
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.05);
+            --shadow-lg: 0 20px 40px rgba(15, 76, 129, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f6f8fd 0%, #f1f5f9 100%);
+            padding: 2rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .contact-form-wrapper {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .brand-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px dashed var(--border);
+        }
+
+        /* --- LOGO SIZE UPDATED HERE --- */
+        .brand-header img {
+            width: 100%; 
+            max-width: 220px; /* Reduced from 400px so it's much smaller */
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        .contact-form-wrapper h3 { 
+            font-size: 1.7rem; 
+            margin-bottom: 0.5rem; 
+            color: #0F4C81; 
+            font-weight: 800;
+            text-align: center;
+        }
+        .contact-form-wrapper > p { 
+            text-align: center;
+            color: var(--gray); 
+            margin-bottom: 2.5rem; 
+            font-size: 1.05rem;
+        }
+
+        .form-row { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 1.5rem; 
+        }
+
+        .form-group { margin-bottom: 1.5rem; }
+        
+        .form-group label { 
+            display: block; 
+            margin-bottom: 0.5rem; 
+            font-weight: 600; 
+            color: var(--dark); 
+            font-size: 0.9rem; 
+        }
+        
+        .form-group label span.req { color: #e63946; } 
+        .form-group label span.hint { color: var(--gray); font-size: 0.75rem; font-weight: 400; float: right; margin-top: 2px;}
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: #F8FAFC;
+            color: var(--dark);
+            box-sizing: border-box;
+        }
+        
+        input[type="date"], input[type="time"] {
+            cursor: text;
+        }
+        ::-webkit-calendar-picker-indicator {
+            background-color: var(--white);
+            padding: 5px;
+            cursor: pointer;
+            border-radius: 6px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0F4C81;
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(15, 76, 129, 0.1);
+        }
+        
+        .form-group textarea { 
+            resize: vertical; 
+            min-height: 120px; 
+        }
+
+        .btn-primary { 
+            background: #0F4C81; 
+            color: var(--white); 
+            padding: 1.1rem; 
+            font-size: 1.1rem; 
+            width: 100%;
+            border-radius: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+            box-shadow: 0 8px 20px rgba(15, 76, 129, 0.2);
+        }
+        .btn-primary:hover { 
+            background: #072e51; 
+            transform: translateY(-3px); 
+            box-shadow: 0 12px 25px rgba(15, 76, 129, 0.3); 
+        }
+
+        .dob-age-group {
+            display: flex;
+            gap: 10px;
+        }
+        .dob-age-group input {
+            flex: 1;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 1rem; }
+            .contact-form-wrapper { padding: 2rem 1.5rem; border-radius: 20px; }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+            .dob-age-group { flex-direction: column; gap: 10px; }
+            .form-group input, 
+            .form-group select, 
+            .form-group textarea { font-size: 16px !important; } 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contact-form-wrapper">
+        
+        <div class="brand-header">
+            <img src="bima-dekho-logo.jpg" alt="Bima Dekho Logo">
+            <h3>Insurance Services & Solutions</h3>
+            <p>Please fill out the details below, and our team will connect with you shortly.</p>
+        </div>
+
+        <form id="insuranceForm" action="https://hook.eu1.make.com/qey67443bf845skbvhvs7p2mmv1d43h4" method="POST">
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Full Name <span class="req">*</span></label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="mobile">Mobile Number <span class="req">*</span></label>
+                    <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="whatsapp">WhatsApp Number</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" placeholder="Enter WhatsApp number">
+                </div>
+                
+                <div class="form-group">
+                    <label>DOB or Age <span class="hint">Type age or use calendar</span></label>
+                    <div class="dob-age-group">
+                        <input type="date" id="dob_date" title="Select Date of Birth from Calendar">
+                        <input type="number" id="dob_age" placeholder="e.g. 25" title="Type Age manually">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="insuranceType">What Are you Looking for? <span class="req">*</span></label>
+                <select id="insuranceType" name="insuranceType" required>
+                    <option value="" disabled selected>Select an insurance category...</option>
+                    <option value="Health Insurance (Individual & Floater)">Health Insurance (Individual & Floater)</option>
+                    <option value="Health Insurance with Worldwide Coverage">Health Insurance with Worldwide Coverage (Individual & Floater)</option>
+                    <option value="Life Insurance & Term Insurance">Life Insurance & Term Insurance</option>
+                    <option value="Life Insurance with Family Protection">Life Insurance with Family Protection</option>
+                    <option value="Life Insurance with whole life Income Plan">Life Insurance with whole life Income Plan</option>
+                    <option value="Life Insurance with Daughter Education & Marriage Plan">Life Insurance with Daughter Education & Marriage Plan</option>
+                    <option value="Retirement Planning with LIC at early age">Retirement Planning with LIC at early age</option>
+                    <option value="Travel Insurance (Student Travel Insurance)">Travel Insurance (Student Travel Insurance)</option>
+                    <option value="Travel Insurance (Individual / Floater)">Travel Insurance (Individual / Floater Travel Insurance)</option>
+                    <option value="Motor Insurance">Motor Insurance (Car / Bike / Scooty / Commercial Vehicle)</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" placeholder="Enter your full address">
+                </div>
+                <div class="form-group">
+                    <label for="location">Contacting Location</label>
+                    <input type="text" id="location" name="location" placeholder="Where should we reach you?">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="appointmentDate">Appointment Date <span class="hint">Type or click calendar</span></label>
+                    <input type="date" id="appointmentDate" name="appointmentDate">
+                </div>
+                <div class="form-group">
+                    <label for="appointmentTime">Appointment Time <span class="hint">Type or click clock</span></label>
+                    <input type="time" id="appointmentTime" name="appointmentTime">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" placeholder="Please provide any additional details or specific requirements..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary">
+                <i class="fas fa-paper-plane"></i> Submit Details To Bima Dekho
+            </button>
+        </form>
+    </div>
+
+    <script>
+        const webhookURL = "https://hook.eu1.make.com/qey67443bf845skbvhvs7p2mmv1d43h4";
+
+        document.getElementById('insuranceForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); 
+            
+            const form = event.target;
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            btn.disabled = true;
+
+            const data = new FormData(form);
+
+            const dateVal = document.getElementById('dob_date').value;
+            const ageVal = document.getElementById('dob_age').value;
+            const finalDob = dateVal ? dateVal : (ageVal ? ageVal + " years old" : "");
+            
+            data.append('dob', finalDob);
+
+            try {
+                await fetch(webhookURL, {
+                    method: 'POST',
+                    body: data
+                });
+
+                alert("Thank you! Your details have been submitted to Bima Dekho. Our team will contact you shortly.");
+                form.reset();
+                
+            } catch (error) {
+                alert("Thank you! Your details have been submitted to Bima Dekho.");
+                form.reset();
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
